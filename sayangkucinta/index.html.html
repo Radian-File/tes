@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Sayang ❤️</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Floating Hearts Animation */
+        .heart {
+            position: absolute;
+            color: #ff6b9d;
+            font-size: 20px;
+            animation: float 6s ease-in-out infinite;
+            opacity: 0.8;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10%, 90% { opacity: 1; }
+            50% { transform: translateY(-10vh) rotate(180deg); opacity: 1; }
+        }
+
+        /* Sparkle Animation */
+        .sparkle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: #fff;
+            border-radius: 50%;
+            animation: sparkle 2s linear infinite;
+        }
+
+        @keyframes sparkle {
+            0%, 100% { opacity: 0; transform: scale(0); }
+            50% { opacity: 1; transform: scale(1); }
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Header Section */
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        .main-title {
+            font-size: 3.5rem;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            margin-bottom: 20px;
+            font-weight: bold;
+            animation: pulse 2s infinite;
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            color: #f8f9fa;
+            opacity: 0.9;
+        }
+
+        /* Birthday Card */
+        .birthday-card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 30px 0;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            animation: slideInUp 1s ease-out 0.5s both;
+        }
+
+        .card-content {
+            text-align: center;
+            color: #fff;
+        }
+
+        .birthday-message {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+
+        /* Photo Section */
+        .photo-section {
+            margin: 40px 0;
+            text-align: center;
+            animation: fadeIn 1s ease-out 1s both;
+        }
+
+        .photo-frame {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #ff6b9d, #c44569);
+            padding: 8px;
+            margin: 0 auto 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .photo-placeholder {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #ffeaa7, #fab1a0);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        /* Wishes Section */
+        .wishes-section {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0;
+            animation: slideInLeft 1s ease-out 1.5s both;
+        }
+
+        .wishes-title {
+            font-size: 2rem;
+            color: #fff;
+            text-align: center;
+            margin-bottom: 25px;
+            font-weight: bold;
+        }
+
+        .wish-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 10px;
+            color: #fff;
+            font-size: 1.1rem;
+            border-left: 4px solid #ff6b9d;
+            transition: transform 0.3s ease;
+        }
+
+        .wish-item:hover {
+            transform: translateX(10px);
+        }
+
+        /* Interactive Button */
+        .love-button {
+            background: linear-gradient(45deg, #ff6b9d, #ff8fab);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            margin: 20px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 107, 157, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .love-button::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            transform: translate(-50%, -50%);
+        }
+
+        .love-button:hover::before {
+            width: 100%;
+            height: 100%;
+        }
+
+        .love-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 107, 157, 0.4);
+        }
+
+        /* Surprise Message Popup */
+        .surprise-popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: linear-gradient(135deg, #ffeaa7 0%, #fab1a0 100%);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+            display: none;
+            animation: popupShow 0.5s ease-out;
+        }
+
+        .surprise-popup.show {
+            display: block;
+        }
+
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            display: none;
+        }
+
+        .popup-overlay.show {
+            display: block;
+        }
+
+        .surprise-title {
+            font-size: 2rem;
+            color: #333;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        .surprise-message {
+            font-size: 1.2rem;
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        .close-popup {
+            background: linear-gradient(45deg, #ff6b9d, #c44569);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .close-popup:hover {
+            transform: scale(1.05);
+        }
+
+        @keyframes popupShow {
+            0% {
+                transform: translate(-50%, -50%) scale(0.8);
+                opacity: 0;
+            }
+            100% {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 1;
+            }
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 20px;
+            color: #fff;
+            opacity: 0.8;
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(100px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-100px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(100px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        /* Responsive Design */
+            @media (max-width: 768px) {
+            .main-title {
+                font-size: 2.5rem;
+            }
+            
+            .birthday-card {
+                padding: 25px;
+            }
+            
+            .photo-frame {
+                width: 200px;
+                height: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating Hearts -->
+    <div class="heart" style="left: 10%; animation-delay: 0s;">❤️</div>
+    <div class="heart" style="left: 20%; animation-delay: 1s;">💕</div>
+    <div class="heart" style="left: 30%; animation-delay: 2s;">💖</div>
+    <div class="heart" style="left: 40%; animation-delay: 3s;">💝</div>
+    <div class="heart" style="left: 50%; animation-delay: 4s;">❤️</div>
+    <div class="heart" style="left: 60%; animation-delay: 5s;">💕</div>
+    <div class="heart" style="left: 70%; animation-delay: 1.5s;">💖</div>
+    <div class="heart" style="left: 80%; animation-delay: 2.5s;">💝</div>
+    <div class="heart" style="left: 90%; animation-delay: 3.5s;">❤️</div>
+
+    <div class="container">
+        <header class="header">
+            <h1 class="main-title">🎉 Happy Birthday Hanyiii! 🎉</h1>
+            <p class="subtitle">Happyy birthdayy my babyyy❤️</p>
+        </header>
+
+        <div class="birthday-card">
+            <div class="card-content">
+                <p class="birthday-message">
+                    SELAMAT ULANG TAHUN YA CINTAKUUU, cieeee 19 tahunn, udahh gedeeee kakkk, perasaan kemarin ketemu masihh 16 tahunnn, aku bersukur banget bisa ketemuu sama kamuu, dengan kamu yang suka random conversation, bercanda gk jelass, ngelakuin hal hal gilaa, dan masi banyak lagii yang gk bisa aku sebutin satu satu. Kamu bisa jadi salah satu alasan aku buat bisa berkembang lebih babee, aku berharap kita bakal selaluu begini ya sayangg. Moment moment sama kamu bakal ke rekam jelas di pikiran aku sampe kapanpunnn, entah gimana kedepanya aku bakal selalu bersyukur bisa ketemu sama kamuu, gk bakal ada hal yang aku sesalinn. If there are many universes in this world, one thing you should know is that I will always choose you in every universe. 
+                </p>
+            </div>
+        </div>
+
+        <div class="photo-section">
+            <div class="photo-frame">
+                <div class="photo-placeholder">
+                    <img src="foto/2.jpeg" alt="Foto Kenangan" 
+         style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+                </div>
+            </div>
+            <p style="color: #fff; font-size: 1.1rem; opacity: 0.9;">
+                MY FAV PICTURE WITH YOU
+            </p>
+        </div>
+
+        <div class="wishes-section">
+            <h2 class="wishes-title">🌟 DOA BUAT KAMU 🌟</h2>
+            <div class="wish-item">
+                Semogaa apa yang kamu doaain selama ini berjalan sesuai dengan apa yang kamu rencanainn
+            </div>
+            <div class="wish-item">
+                SELALU SEHATTT DAN PANJANG UMURR YAHHHH
+            </div>
+            <div class="wish-item">
+                Bisa naikin drajatt orang tua kamuu (AMMIINN TERDALAMMM)
+            </div>
+            <div class="wish-item">
+                Selalu di berii lingkungan yang baik dan selaluu jagain kamuu
+            </div>
+            <div class="wish-item">
+                Semoga selalu konsisten buat make kerudungnyaaa 
+            </div>
+        </div>
+
+
+
+        <div style="text-align: center; margin: 40px 0;">
+            <button class="love-button" onclick="showLoveMessage()">
+                CLICK MEE
+            </button>
+        </div>
+
+        <!-- Surprise Popup -->
+        <div class="popup-overlay" id="popupOverlay" onclick="closePopup()"></div>
+        <div class="surprise-popup" id="surprisePopup">
+            <h2 class="surprise-title">NOTES FOR YOU</h2>
+            <p class="surprise-message" id="surpriseMessage">
+                Hal apapun yang bakal kita hadapin nanti satu yang perlu kamu tau, aku bakal selalu ada di sisi kamu kokk, Makasi yaaa udah tambahin warna yang banyakk di dalam hidup aku IT MEANS A LOT FOR MEE
+            </p>
+            <button class="close-popup" onclick="closePopup()">❤️ Tutup</button>
+        </div>
+
+        <footer class="footer">
+            <p>I LOVE YOUUUUU</p>
+            <p>I LOVE YOUUUUU</p>
+        </footer>
+    </div>
+
+    <!-- Sparkles -->
+    <div class="sparkle" style="top: 10%; left: 15%; animation-delay: 0s;"></div>
+    <div class="sparkle" style="top: 20%; left: 85%; animation-delay: 0.5s;"></div>
+    <div class="sparkle" style="top: 40%; left: 10%; animation-delay: 1s;"></div>
+    <div class="sparkle" style="top: 60%; left: 90%; animation-delay: 1.5s;"></div>
+    <div class="sparkle" style="top: 80%; left: 20%; animation-delay: 2s;"></div>
+
+    <script>
+        // Love Message Function
+        function showLoveMessage() {
+            const messages = [
+                "Hal apapun yang bakal kita hadapin nanti satu yang perlu kamu tau, aku bakal selalu ada di sisi kamu kokk, Makasi yaaa udah tambahin warna yang banyakk di dalam hidup aku IT MEANS A LOT FOR MEE",
+               
+            ];
+            
+            const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+            document.getElementById('surpriseMessage').innerHTML = randomMessage;
+            document.getElementById('popupOverlay').classList.add('show');
+            document.getElementById('surprisePopup').classList.add('show');
+        }
+
+        function closePopup() {
+            document.getElementById('popupOverlay').classList.remove('show');
+            document.getElementById('surprisePopup').classList.remove('show');
+        }
+
+        // Create more sparkles dynamically
+        function createSparkles() {
+            for (let i = 0; i < 20; i++) {
+                const sparkle = document.createElement('div');
+                sparkle.className = 'sparkle';
+                sparkle.style.top = Math.random() * 100 + '%';
+                sparkle.style.left = Math.random() * 100 + '%';
+                sparkle.style.animationDelay = Math.random() * 2 + 's';
+                document.body.appendChild(sparkle);
+            }
+        }
+
+        // Initialize when page loads
+        window.onload = function() {
+            createSparkles();
+        };
+
+        // Add click effects
+        document.addEventListener('click', function(e) {
+            const colors = ['#ff6b9d', '#c44569', '#ffeaa7', '#fab1a0', '#74b9ff'];
+            const randomColor = colors[Math.floor(Math.random() * colors.length)];
+            
+            const ripple = document.createElement('div');
+            ripple.style.position = 'absolute';
+            ripple.style.borderRadius = '50%';
+            ripple.style.background = randomColor;
+            ripple.style.transform = 'scale(0)';
+            ripple.style.animation = 'ripple 0.6s linear';
+            ripple.style.left = (e.clientX - 5) + 'px';
+            ripple.style.top = (e.clientY - 5) + 'px';
+            ripple.style.width = '10px';
+            ripple.style.height = '10px';
+            ripple.style.pointerEvents = 'none';
+            ripple.style.zIndex = '9999';
+            
+            document.body.appendChild(ripple);
+            
+            setTimeout(() => {
+                ripple.remove();
+            }, 600);
+        });
+
+        // Add ripple animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes ripple {
+                to {
+                    transform: scale(4);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
